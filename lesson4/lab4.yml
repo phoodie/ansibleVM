@@ -1,0 +1,26 @@
+---
+- name: lab4 installing http
+  hosts: ansible2.example.com
+  tasks:
+  - name: installs httpd & firewalld
+    yum:
+      name:
+        - httpd
+        - firewalld
+      state: latest
+
+  - name: create httpd welcome text
+    copy:
+      content: "Welcome!"
+      dest: /var/www/html/index.html
+
+  - name: enable httpd & firewall
+    systemd:
+      name: httpd
+      state: started
+  
+  - name: allow httpd through firewall settings
+    firewalld:
+      service: https
+      permanent: yes
+      state: enabled

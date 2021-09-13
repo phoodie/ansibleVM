@@ -1,0 +1,9 @@
+users:
+  - username: champ
+    homedir: /home/champ
+
+  - username: lulu
+    homedir: /home/lulu
+
+  - username: lucky
+    homedir: /home/lucky

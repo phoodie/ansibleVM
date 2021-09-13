@@ -1,0 +1,9 @@
+---
+- name: Test run of adding user
+  hosts: ansible1
+  tasks:
+  - name: adding user
+    user:
+      name: champ
+      shell: /bin/bash
+

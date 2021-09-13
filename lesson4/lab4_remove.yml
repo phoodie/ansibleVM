@@ -1,0 +1,18 @@
+---
+- name: "Removes lesson 4 contents"
+  hosts: ansible2
+  tasks:
+  - name: block httpd
+    firewalld:
+      service: https
+      state: disabled
+  - name: delete httpd index file
+    file:
+      path: /var/www/html/index.html
+      state: absent
+  - name: uninstall httpd
+    yum:
+      name: httpd
+      state: absent
+
+

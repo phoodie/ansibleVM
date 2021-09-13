@@ -1,0 +1,20 @@
+---
+- name: install httpd on ansible2
+  hosts: ansible2.example.com
+  tasks:
+  - name: install httpd
+    yum:
+      name: 
+      - httpd
+      - firewalld
+      state: latest
+  - name: add in content html
+    copy:
+      content: "Welcome from ansible controller 2!"
+      dest: /var/www/html/index.html
+      follow: yes
+  - name: unblock firwalld for httpd
+    firewalld:
+      service: http
+      permanent: yes
+      state: enabled

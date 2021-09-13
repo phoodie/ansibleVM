@@ -1,0 +1,19 @@
+---
+- name: remove http contents
+  hosts: ansible2
+  tasks:
+  - name: remove http content
+    file:
+      path: /var/www/html/index.html
+      state: absent
+
+  - name: remove httpd
+    yum:
+      name:
+      - httpd
+      state: absent
+  - name: firewall block http
+    firewalld:
+      service: http
+      state: disabled
+      permanent: yes

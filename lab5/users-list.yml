@@ -1,0 +1,11 @@
+---
+- name: using list to add users
+  hosts: ansible2.example.com
+  vars_files:
+  - vars/users
+  tasks:
+
+  - name: array values
+    debug:
+      msg: "User {{ item.username }} has directory of {{ item.homedir }}"
+    loop: "{{ users }}"
