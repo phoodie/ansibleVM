@@ -1,0 +1,16 @@
+---
+- name: display facts
+  hosts: lamp
+  vars:
+    remote_dir: /etc/ansible/facts.d
+    facts_file: localfacts.fact
+  tasks:
+  - name: create a fact directory
+    file:
+      state: directory
+      path: "{{ remote_dir }}"
+      recurse: yes
+  - name: install new local facts file
+    copy:
+      src: "{{ facts_file }}"
+      dest: "{{ remote_dir }}"

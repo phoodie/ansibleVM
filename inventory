@@ -1,5 +1,13 @@
 ansible1.example.com
 ansible2.example.com
 
-ansible1
-ansible2
+[lamp]
+ansible1.example.com
+
+[file]
+ansible2.example.com
+
+[nodes:children]
+lamp
+file
+

@@ -1,0 +1,26 @@
+---
+- name: clean up after lab5
+  hosts: ansible1.example.com
+  vars:
+    remote_dir: /etc/ansible/facts.d
+    facts_file: localfacts.d
+  tasks:
+  - name: delete facts file
+    file:
+      path: "{{ facts_file }}"
+      state: absent
+
+  - name: delete facts.d
+    file:
+      path: "{{ remote_dir }}"
+      state: absent
+
+  - name: disable smb service
+    service:
+      name: smb
+      state: stopped
+
+  - name: uninstall samba
+    yum:
+      name: samba
+      state: absent

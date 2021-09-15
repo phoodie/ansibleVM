@@ -1,0 +1,4 @@
+[insidefacts]
+package = samba
+service = smb
+state = enabled

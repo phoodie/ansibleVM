@@ -1,0 +1,10 @@
+---
+- name: show ip and hostname
+  hosts: ansible1.example.com
+  tasks:
+  - name: show ip
+    debug:
+      msg: The IP address of ansible1 is {{ ansible_facts.default_ipv4.address }}
+  - name: show hostname
+    debug:
+      msg: The Hostname of ansible1 is {{ ansible_facts.hostname }}

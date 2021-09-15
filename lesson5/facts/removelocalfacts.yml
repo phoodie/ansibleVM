@@ -1,0 +1,16 @@
+---
+- name: remove local facts
+  hosts: lamp
+  vars:
+    remote_dir: /etc/ansible/facts.d
+    facts_file: localfacts.fact
+  tasks:
+  - name: remove localfacts file
+    file:
+      path: "{{ facts_file }}"
+      state: absent
+  - name: remove facts.d directory
+    file:
+      path: "{{ remote_dir }}"
+      state: absent
+

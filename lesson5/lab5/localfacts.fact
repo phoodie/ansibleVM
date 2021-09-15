@@ -1,0 +1,4 @@
+[lab5facts]
+package = samba
+service = smb
+state = started

@@ -1,0 +1,26 @@
+---
+- name: working with variables and facts
+  hosts: lamp
+  vars:
+    remote_dir: /etc/ansible/facts.d
+    facts_file: localfacts.fact
+  tasks:
+  - name: creates fact directory
+    file:
+      path: "{{ remote_dir }}"
+      recurse: yes
+      state: directory
+  - name: place the facts file
+    copy:
+      src: "{{ facts_file }}"
+      dest: "{{ remote_dir }}"
+  
+  - name: install samba
+    yum:
+      name: "{{ ansible_local.localfacts.lab5facts.package }}"
+      state: latest
+
+  - name: start samba service
+    service:
+      name: "{{ ansible_local.localfacts.lab5facts.service }}"
+      state: "{{ ansible_local.localfacts.lab5facts.state }}"
